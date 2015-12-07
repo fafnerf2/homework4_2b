@@ -36,46 +36,51 @@ public class SqlGatewayServlet extends HttpServlet {
      * @throws IOException
      */
       
+  @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         doPost(request, response);
          }
 
     
-    
+    @Override
     protected void doPost(HttpServletRequest request,
       HttpServletResponse response) throws ServletException, IOException {        
-      String url = "index.jsp";        
+      String url = "/index.jsp";        
       String action = request.getParameter("action");  
       
       //System.out.println(action);
       
       if(action.equals("goToCheckout")) {
-        url = "checkout.jsp";
+        url = "/checkout.jsp";
       }        
-      else if(action != null && action.equals("goToBooks")) {            
+      else if(action.equals("goToBooks")) {            
         ArrayList<Book> books = BookDB.selectBooks();            
         request.setAttribute("books", books);            
-        url = "manage.jsp";
+        url = "/manage.jsp";
       }        
-      else if(action != null && action.equals("goToIndex")) {
-        url = "index.jsp";
+      else if(action.equals("goToIndex")) {
+        url = "/index.jsp";
       }
-      else if(action != null && action.equals("Checkout")) {
-        url = "library.jsp";
+      else if(action.equals("Checkout")) {
+        url = "/library.jsp";
       }
       
-      if(action != null && action.equals("doCheckout")) {                
+      if(action.equals("doCheckout")) {                
         String firstName = request.getParameter("firstName");
         String lastName = request.getParameter("lastName");
         String email = request.getParameter("email");
         String bookTitle = request.getParameter("bookTitle");
         //Date dueDate = request.getParameter("dueDate");
         Book book = new Book(firstName, lastName, email, bookTitle);
+        System.out.println(book.toString());
         BookDB.insert(book);
+        url="/library.jsp";
         
-        getServletContext().getRequestDispatcher(url)
-          .forward(request, response);
+        
         }
+      getServletContext().getRequestDispatcher(url)
+          .forward(request, response);
     }
+    
 }

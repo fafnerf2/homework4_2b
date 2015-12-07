@@ -15,18 +15,19 @@ import java.util.ArrayList;
 public class BookDB {
     
      public static int insert(Book book) {
+       
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection connection = pool.getConnection();
         PreparedStatement ps = null;
 
         String query
-                = "INSERT INTO book (firstName, lastName, email, title, dueDate)"
+                = "INSERT INTO book (FirstName, LastName, Email, BookTitle, DueDate)"
                 + "VALUES (?, ?, ?, ?, ?)";
         try {
             ps = connection.prepareStatement(query);
-            ps.setString(1, book.getEmail());
-            ps.setString(2, book.getFirstName());
-            ps.setString(3, book.getLastName());
+            ps.setString(1, book.getFirstName());
+            ps.setString(2, book.getLastName());
+            ps.setString(3, book.getEmail());
             ps.setString(4, book.getTitle());
            java.sql.Date sqlDate = new java.sql.Date( book.getDueDate().getTime());
             ps.setDate(5, sqlDate);
@@ -60,7 +61,7 @@ public class BookDB {
         }
     }
      public static ArrayList<Book> selectBooks() {
-        ArrayList<Book> books = new ArrayList<Book>();
+        ArrayList<Book> books = new ArrayList<>();
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection connection = pool.getConnection();
         PreparedStatement ps = null;

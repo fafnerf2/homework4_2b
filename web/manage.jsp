@@ -34,7 +34,7 @@
        </c:forEach>
     </table>  
     <p>
-    <a id="return" href="index.jsp?action=goToIndex&amp;">Return to front page
+    <a id="return" href="BookServlet?action=goToIndex">Return to front page
     </a>
     <br><br>
     </p>

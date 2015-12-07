@@ -22,7 +22,7 @@
       <label>Book Title:</label>
       <input id="book_input" type="text" name="bookTitle" ><br>
       <label>&nbsp;</label>
-      <input type="submit" value="Checkout" id="check_button>
+      <input type="submit" action="BookServlet" value="Checkout" id="check_button">
     </form>
   
     </div>

@@ -25,7 +25,7 @@
     . A friendly email reminder will be sent to you if
     your book becomes overdue.
   <br><br>
-  <a id="return" href="index.jsp?action=goToIndex&amp;"> 
+  <a id="return" href="BookServlet?action=goToIndex"> 
   <b> Return to front page 
   </b>
   </a>

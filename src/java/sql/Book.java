@@ -30,7 +30,7 @@ public class Book implements Serializable {
         email = "";
         bookTitle = "";
         Calendar c = new GregorianCalendar();
-        Date dueDate = c.getTime();
+        this.dueDate = c.getTime();
         c.add(Calendar.DAY_OF_WEEK, 14);
         dueDate = c.getTime();
         
@@ -50,7 +50,7 @@ public class Book implements Serializable {
         this.email = email;
         this.bookTitle = bookTitle;
          Calendar c = new GregorianCalendar();
-        Date dueDate = c.getTime();
+        this.dueDate = c.getTime();
         c.add(Calendar.DAY_OF_WEEK, 14);
         dueDate = c.getTime();
     }
